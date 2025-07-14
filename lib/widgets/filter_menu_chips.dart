@@ -62,7 +62,32 @@ class _FilterMenuChipsState
                 );
               }).toList(),
             );
-          }),
+          }).toList(),
+          Divider(height: 32),
+          Text(
+            "Seçilen Filtreler",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+          SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: selectedFilter.map((
+              filter,
+            ) {
+              return Chip(
+                label: Text(filter),
+                onDeleted: () {
+                  setState(() {
+                    selectedFilter.remove(filter);
+                  });
+                },
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
